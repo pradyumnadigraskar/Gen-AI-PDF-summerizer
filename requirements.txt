@@ -1,0 +1,4 @@
+flask
+PyMuPDF
+langchain
+ollama 

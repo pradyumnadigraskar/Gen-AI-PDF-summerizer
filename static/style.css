@@ -1,0 +1,143 @@
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+    background: linear-gradient(to right, #e0c3fc, #8ec5fc);
+    padding: 40px;
+    color: #333;
+    min-height: 100vh;
+}
+
+/* Header */
+h1 {
+    text-align: center;
+    color: #3a0066;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Styling */
+form {
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+    background: white;
+    padding: 25px 30px;
+    border-radius: 15px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+form:hover {
+    box-shadow: 0 16px 28px rgba(0, 0, 0, 0.15);
+}
+
+label {
+    display: block;
+    margin: 15px 0 5px;
+    font-weight: 600;
+    color: #3a0066;
+}
+
+input[type="file"],
+select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+input[type="file"]:focus,
+select:focus {
+    border-color: #7a00cc;
+    outline: none;
+}
+
+/* Buttons */
+button {
+    background: #7a00cc;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background: #6200a3;
+    transform: scale(1.02);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Summary Section */
+.summary-title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-top: 40px;
+    color: #4b0082;
+}
+
+.summary-box {
+    max-width: 800px;
+    margin: 20px auto;
+    background: #ffffffee;
+    padding: 25px;
+    border-left: 6px solid #7a00cc;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 1rem;
+    line-height: 1.6;
+    transition: box-shadow 0.3s ease;
+}
+
+.summary-box:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Clear Summary Form */
+.clear-form {
+    text-align: center;
+    margin-top: 25px;
+}
+
+hr {
+    margin: 40px auto;
+    max-width: 600px;
+    border: none;
+    height: 1px;
+    background-color: #ccc;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+
+    form, .summary-box {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .summary-title {
+        font-size: 1.5rem;
+    }
+}

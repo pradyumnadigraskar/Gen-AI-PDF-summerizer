@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>📚 AI PDF Summarizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>📄 AI PDF Summarizer</h1>
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="file">Choose a PDF file:</label>
+        <input type="file" name="file" accept=".pdf" required>
+
+        <label for="language">Select output language:</label>
+        <select name="language" required>
+            <option value="English" selected>English</option>
+            <option value="Hindi">Hindi</option>
+            <option value="Marathi">Marathi</option>
+        </select>
+
+        <button type="submit">Summarize</button>
+    </form>
+
+    {% if summary %}
+        <hr>
+        <h2 class="summary-title">📝 Summary</h2>
+        <div class="summary-box">
+            {{ summary }}
+        </div>
+
+        <div class="clear-form">
+            <form action="/clear" method="post">
+                <button type="submit">Clear Summary</button>
+            </form>
+        </div>
+    {% endif %}
+</body>
+</html>
