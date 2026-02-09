@@ -45,18 +45,17 @@
 
 > **Add your screenshots in the `static/` folder and update the image links below!**
 
-| Main Page | Language Selection | Summarized Text | Clear Summary |
-|-----------|-------------------|-----------------|--------------|
-| ![Main Page](main.png) | ![Language Selection](lang.png) | ![Summarized Text](summ.png) | ![Clear Summary](clr.png) |
+| ![Main Page](main.png) | ![Language Selection](lang.png) | ![Summarized Text](summ.png) | ![Clear Summary](clr.png) | ![Status](stat.png) |![Status2](stat2.png) |
+
 
 ---
 
 ## 🛠️ Tech Stack
 - **Python 3.x**
-- **Flask** (web framework)
+- **Fast API** (web framework)
 - **PyMuPDF** (PDF parsing)
 - **Langchain** (text splitting)
-- **Ollama** (AI summarization)
+- **Ollama / Gemini** (AI summarization)
 
 ---
 

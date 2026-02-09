@@ -1,39 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>📚 AI PDF Summarizer</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <meta charset="UTF-8" />
+  <title>AI PDF Pro</title>
+  <link rel="stylesheet" href="/static/style.css" />
 </head>
 <body>
-    <h1>📄 AI PDF Summarizer</h1>
+  <div id="loading" class="overlay">
+    <div class="loader"></div>
+    <h2 style="color: white; margin: 0;">Processing Document...</h2>
+    <p style="color: rgba(255,255,255,0.7);">Generating AI summary in your language</p>
+  </div>
 
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <label for="file">Choose a PDF file:</label>
-        <input type="file" name="file" accept=".pdf" required>
+  <div class="container">
+    <h1>📚 AI PDF Pro</h1>
+    <div class="status-bar">
+      <div class="status-item"><span id="oDot" class="dot offline"></span> Ollama</div>
+      <div class="status-item"><span id="gDot" class="dot online"></span> Gemini</div>
+    </div>
 
-        <label for="language">Select output language:</label>
-        <select name="language" required>
-            <option value="English" selected>English</option>
-            <option value="Hindi">Hindi</option>
-            <option value="Marathi">Marathi</option>
-        </select>
+    <form action="/upload" method="post" enctype="multipart/form-data" id="uploadForm">
+      <input type="file" name="file" accept=".pdf" required />
+      <select name="language">
+        <option>English</option>
+        <option>Hindi</option>
+        <option>Marathi</option>
+      </select>
 
-        <button type="submit">Summarize</button>
+      <div class="switch-container">
+        <span>Ollama</span>
+        <label class="switch">
+          <input type="checkbox" onchange="document.getElementById('mtype').value=this.checked?'gemini':'ollama'" />
+          <span class="slider"></span>
+        </label>
+        <span>Gemini</span>
+        <input type="hidden" name="model_type" id="mtype" value="ollama" />
+      </div>
+
+      <button type="submit">✨ Generate Summary</button>
     </form>
+  </div>
 
-    {% if summary %}
-        <hr>
-        <h2 class="summary-title">📝 Summary</h2>
-        <div class="summary-box">
-            {{ summary }}
-        </div>
+  <script>
+    const form = document.getElementById('uploadForm');
+    const loading = document.getElementById('loading');
 
-        <div class="clear-form">
-            <form action="/clear" method="post">
-                <button type="submit">Clear Summary</button>
-            </form>
-        </div>
-    {% endif %}
+    form.onsubmit = () => {
+      loading.style.display = 'flex';
+      document.body.classList.add('loading');
+    };
+
+    async function checkStatus() {
+      try {
+        const r = await fetch("/status");
+        const d = await r.json();
+        document.getElementById("oDot").className = "dot " + (d.ollama ? "online" : "offline");
+      } catch (e) {}
+    }
+
+    setInterval(checkStatus, 5000);
+    checkStatus();
+
+    window.onpageshow = () => {
+      loading.style.display = "none";
+      document.body.classList.remove("loading");
+    };
+  </script>
 </body>
 </html>

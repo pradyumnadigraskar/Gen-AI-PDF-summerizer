@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Summary Result</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="container" style="width: 800px; max-width: 95%; text-align: left; align-self: flex-start; margin-top: 50px; margin-bottom: 50px;">
+    <div style="background:rgba(255,255,255,0.3); padding:5px 15px; border-radius:20px; font-size:12px; display:inline-block; margin-bottom:15px; font-weight: bold;">
+      {{ model }} | {{ language }}
+    </div>
+
+    <h2 style="margin: 0 0 20px 0;">📝 Summary Result</h2>
+
+    <div class="summary-box">
+      <pre style="white-space: pre-wrap; margin: 0; font-family: inherit;">{{ summary }}</pre>
+    </div>
+
+    <div style="display:flex; gap:15px; margin-top:30px;">
+      <a href="/" style="flex:1; background:rgba(255,255,255,0.2); padding:15px; border-radius:15px; text-decoration:none; color:white; text-align:center; font-weight:bold; border: 1px solid white;">
+        New Summary
+      </a>
+      <button onclick="window.print()" style="flex:1;">Print/Save</button>
+    </div>
+  </div>
+</body>
+</html>
